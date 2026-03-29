@@ -1,0 +1,138 @@
+<p style="color: green; text-align: center;"><%= notice %></p>
+
+<style>
+  body {
+    background-color: #fafafa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  .page-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Top bar */
+  .top-bar {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+  }
+
+  .back-link {
+    text-decoration: none;
+    color: #262626;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  /* Post */
+  .post-card {
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    margin: 15px;
+    overflow: hidden;
+  }
+
+  .post-body {
+    padding: 15px;
+  }
+
+  /* Actions */
+  .actions {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #efefef;
+    padding: 10px;
+  }
+
+  .actions a, .actions form button {
+    background: none;
+    border: none;
+    color: #0095f6;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .actions form {
+    display: inline;
+  }
+
+  .actions a:hover, .actions form button:hover {
+    text-decoration: underline;
+  }
+
+  /* Comentários */
+  .comments {
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 15px;
+  }
+
+  .comment {
+    padding: 8px 0;
+    border-bottom: 1px solid #efefef;
+    font-size: 14px;
+  }
+
+  .comment:last-child {
+    border-bottom: none;
+  }
+
+  .comments-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+</style>
+
+<div class="page-container">
+
+  <!-- Barra superior -->
+  <div class="top-bar">
+    <%= link_to "← Voltar", posts_path, class: "back-link" %>
+    <div class="title">Post</div>
+    <div></div>
+  </div>
+
+  <!-- Post -->
+  <div class="post-card">
+    <div class="post-body">
+      <%= render @post %>
+    </div>
+
+    <div class="actions">
+      <%= link_to "Editar", edit_post_path(@post) %>
+      <%= link_to "Voltar", posts_path %>
+      <%= button_to "Excluir", @post, method: :delete %>
+    </div>
+  </div>
+
+  <!-- Comentários -->
+  <div class="comments">
+    <div class="comments-title">Comentários</div>
+
+    <% @post.comments.each do |comment| %>
+      <div class="comment">
+        <%= comment.body %>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>

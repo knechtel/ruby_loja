@@ -1,0 +1,156 @@
+<%= form_with(model: post) do |form| %>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    .page-container {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Top bar estilo Instagram */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid #dbdbdb;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 10;
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: #262626;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .title {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .submit-top {
+      background: none;
+      border: none;
+      color: #0095f6;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .submit-top:hover {
+      color: #0077cc;
+    }
+
+    /* Card */
+    .form-container {
+      padding: 15px;
+    }
+
+    .form-card {
+      background: #fff;
+      border: 1px solid #dbdbdb;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 15px;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #8e8e8e;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dbdbdb;
+      border-radius: 6px;
+      background: #fafafa;
+      font-size: 14px;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: #a8a8a8;
+      background: #fff;
+    }
+
+    .textarea-field {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Erros */
+    .error-box {
+      background: #ffe6e6;
+      border: 1px solid #ffb3b3;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    .error-box h2 {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .error-box ul {
+      padding-left: 18px;
+      font-size: 13px;
+    }
+  </style>
+
+  <div class="page-container">
+
+    <!-- Barra superior -->
+    <div class="top-bar">
+      <%= link_to "← Voltar", posts_path, class: "back-link" %>
+      <div class="title">Novo post</div>
+      <%= form.submit "Publicar", class: "submit-top" %>
+    </div>
+
+    <!-- Conteúdo -->
+    <div class="form-container">
+      <div class="form-card">
+
+        <% if post.errors.any? %>
+          <div class="error-box">
+            <h2><%= pluralize(post.errors.count, "error") %> impediram o salvamento:</h2>
+            <ul>
+              <% post.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="input-group">
+          <%= form.label :title %>
+          <%= form.text_field :title, class: "input-field", placeholder: "Digite um título..." %>
+        </div>
+
+        <div class="input-group">
+          <%= form.label :body %>
+          <%= form.textarea :body, class: "input-field textarea-field", placeholder: "O que você está pensando?" %>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+<% end %>

@@ -1,0 +1,89 @@
+<% content_for :title, "Editing post" %>
+
+<style>
+  body {
+    background-color: #fafafa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  .page-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Top bar */
+  .top-bar {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+  }
+
+  .back-link {
+    text-decoration: none;
+    color: #262626;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .submit-top {
+    background: none;
+    border: none;
+    color: #0095f6;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .submit-top:hover {
+    color: #0077cc;
+  }
+
+  /* Conteúdo */
+  .content {
+    padding: 15px;
+  }
+
+  .links {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .links a {
+    text-decoration: none;
+    color: #0095f6;
+    font-weight: 500;
+    margin: 0 5px;
+  }
+
+  .links a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="page-container">
+
+  <!-- Barra superior -->
+  
+  <!-- Formulário -->
+  <div class="content">
+    <%= render "form", post: @post %>
+
+    <div class="links">
+      <%= link_to "Ver post", @post %> |
+      <%= link_to "Voltar para feed", posts_path %>
+    </div>
+  </div>
+
+</div>

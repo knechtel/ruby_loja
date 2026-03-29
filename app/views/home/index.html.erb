@@ -1,0 +1,125 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Posts" %>
+
+<style>
+  body {
+    background-color: #fafafa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 40px auto;
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 30px;
+  }
+
+  .post-card {
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    overflow: hidden;
+  }
+
+  .post-header {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #efefef;
+  }
+
+  .avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #ddd;
+    margin-right: 10px;
+  }
+
+  .username {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .post-body {
+    padding: 15px;
+  }
+
+  .post-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-top: 1px solid #efefef;
+  }
+
+  .btn-link {
+    text-decoration: none;
+    font-size: 14px;
+    color: #0095f6;
+    font-weight: 500;
+  }
+
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+
+  .new-post {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+  }
+
+  .fab {
+    background: #0095f6;
+    color: white;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .fab:hover {
+    background: #0077cc;
+  }
+</style>
+
+<div class="container">
+  <h1>Feed</h1>
+
+  <div id="posts">
+    <% @posts.each do |post| %>
+      <div class="post-card">
+
+        <div class="post-header">
+          <div class="avatar"></div>
+          <div class="username">usuario</div>
+        </div>
+
+        <div class="post-body">
+          <%= render post %>
+        </div>
+
+        <div class="post-actions">
+          <%= link_to "Curtir", post, class: "btn-link" %>
+          <%= link_to "Ver mais", post, class: "btn-link" %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="new-post">
+  <%= link_to "+", new_post_path, class: "fab" %>
+</div>
