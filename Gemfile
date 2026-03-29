@@ -70,6 +70,6 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "rubocop", "~> 1.85", group: :development
+gem "rubocop", "~> 1.86", group: :development
 
 gem "ruby-lsp", "~> 0.26.8", group: :development
