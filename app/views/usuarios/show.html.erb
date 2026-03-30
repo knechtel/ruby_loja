@@ -1,0 +1,105 @@
+
+<style>
+  body {
+    background-color: #fafafa;
+    font-family: Arial, sans-serif;
+  }
+
+  .insta-container {
+    max-width: 500px;
+    margin: 40px auto;
+  }
+
+  .insta-card {
+    background: white;
+    border: 1px solid #dbdbdb;
+    padding: 25px;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .insta-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+
+  .insta-name {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .insta-login {
+    color: gray;
+    margin-bottom: 15px;
+  }
+
+  .insta-actions {
+    margin-top: 20px;
+  }
+
+  .insta-link {
+    color: #0095f6;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 5px;
+  }
+
+  .insta-link:hover {
+    text-decoration: underline;
+  }
+
+  .insta-delete {
+    margin-top: 15px;
+  }
+
+  .insta-delete input {
+    background-color: #ed4956;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .insta-delete input:hover {
+    background-color: #c13545;
+  }
+
+  .notice {
+    color: green;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+</style>
+
+<div class="insta-container">
+
+  <p class="notice"><%= notice %></p>
+
+  <div class="insta-card">
+    
+    <%# Se tiver avatar como URL %>
+    <% if @usuario.avatar.present? %>
+      <img src="<%= @usuario.avatar %>" class="insta-avatar">
+    <% end %>
+
+    <div class="insta-name"><%= @usuario.nome %></div>
+    <div class="insta-login">@<%= @usuario.login %></div>
+
+    <%# Mantém render se quiser mostrar mais campos %>
+    <%= render @usuario %>
+
+    <div class="insta-actions">
+      <%= link_to "Editar perfil", edit_usuario_path(@usuario), class: "insta-link" %> |
+      <%= link_to "Voltar", usuarios_path, class: "insta-link" %>
+    </div>
+
+    <div class="insta-delete">
+      <%= button_to "Excluir conta", @usuario, method: :delete %>
+    </div>
+
+  </div>
+</div> 

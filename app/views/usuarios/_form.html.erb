@@ -1,0 +1,90 @@
+<style>
+  body {
+    background-color: #fafafa;
+    font-family: Arial, sans-serif;
+  }
+
+  .insta-container {
+    max-width: 350px;
+    margin: 50px auto;
+    padding: 40px 30px;
+    background: white;
+    border: 1px solid #dbdbdb;
+    text-align: center;
+  }
+
+  .insta-logo {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .insta-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    background: #fafafa;
+  }
+
+  .insta-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0095f6;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .insta-button:hover {
+    background-color: #007adf;
+  }
+
+  .error-box {
+    color: red;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+</style>
+
+<div class="insta-container">
+  <div class="insta-logo">Cadastro</div>
+
+  <%= form_with(model: usuario) do |form| %>
+    
+    <% if usuario.errors.any? %>
+      <div class="error-box">
+        <h4><%= pluralize(usuario.errors.count, "erro") %> impediram o salvamento:</h4>
+        <ul>
+          <% usuario.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.text_field :login, placeholder: "Login", class: "insta-input" %>
+    </div>
+
+    <div>
+      <%= form.text_field :nome, placeholder: "Nome completo", class: "insta-input" %>
+    </div>
+
+    <div>
+      <%= form.password_field :senha, placeholder: "Senha", class: "insta-input" %>
+    </div>
+
+    <div>
+      <%= form.text_field :avatar, placeholder: "URL do avatar", class: "insta-input" %>
+    </div>
+
+    <div>
+      <%= form.submit "Cadastrar", class: "insta-button" %>
+    </div>
+
+  <% end %>
+</div>

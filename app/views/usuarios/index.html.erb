@@ -1,0 +1,85 @@
+<style>
+  body {
+    background-color: #fafafa;
+    font-family: Arial, sans-serif;
+  }
+
+  .insta-wrapper {
+    max-width: 500px;
+    margin: 40px auto;
+  }
+
+  .insta-header {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .insta-card {
+    background: white;
+    border: 1px solid #dbdbdb;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+  }
+
+  .insta-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0095f6;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .insta-link:hover {
+    text-decoration: underline;
+  }
+
+  .insta-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #0095f6;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+
+  .insta-button:hover {
+    background-color: #007adf;
+  }
+
+  .notice {
+    color: green;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+</style>
+
+<div class="insta-wrapper">
+
+  <p class="notice"><%= notice %></p>
+
+  <% content_for :title, "Usuarios" %>
+
+  <div class="insta-header">Usuários</div>
+
+  <div id="usuarios">
+    <% @usuarios.each do |usuario| %>
+      <div class="insta-card">
+        <%= render usuario %>
+
+        <p>
+          <%= link_to "Ver usuário", usuario, class: "insta-link" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "Novo usuário", new_usuario_path, class: "insta-button" %>
+
+</div>

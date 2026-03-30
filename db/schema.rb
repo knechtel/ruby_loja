@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_28_004107) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_30_052931) do
   create_table "clientes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "cpf"
     t.datetime "created_at", null: false
@@ -36,6 +36,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_28_004107) do
     t.text "body"
     t.datetime "created_at", null: false
     t.string "title"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "usuarios", charset: "utf8mb3", force: :cascade do |t|
+    t.string "avatar"
+    t.datetime "created_at", null: false
+    t.string "login"
+    t.string "nome"
+    t.string "senha"
     t.datetime "updated_at", null: false
   end
 
