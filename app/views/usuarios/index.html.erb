@@ -1,4 +1,9 @@
 <style>
+  .new-post {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+}
   body {
     background-color: #fafafa;
     font-family: Arial, sans-serif;
@@ -58,6 +63,23 @@
     text-align: center;
     margin-bottom: 15px;
   }
+  .fab {
+    background: #0095f6;
+    color: white;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .fab:hover {
+    background: #0077cc;
+  }
 </style>
 
 <div class="insta-wrapper">
@@ -80,6 +102,8 @@
     <% end %>
   </div>
 
-  <%= link_to "Novo usuário", new_usuario_path, class: "insta-button" %>
-
+  
+<div class="new-post">
+  <%= link_to "+", new_usuario_path, class: "fab" %>
+</div>
 </div>
