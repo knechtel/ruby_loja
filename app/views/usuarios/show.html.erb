@@ -81,11 +81,8 @@
 
   <div class="insta-card">
     
-    <%# Se tiver avatar como URL %>
-    <% if @usuario.avatar.present? %>
-      <img src="<%= @usuario.avatar %>" class="insta-avatar">
-    <% end %>
 
+<%= image_tag @usuario.image.variant(resize_to_fill: [100, 100]), style: "border-radius: 50%" if @usuario.image.attached? %>
     <div class="insta-name"><%= @usuario.nome %></div>
     <div class="insta-login">@<%= @usuario.login %></div>
 

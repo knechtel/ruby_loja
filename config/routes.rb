@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => "/api-docs"
+  mount Rswag::Api::Engine => "/api-docs"
   resources :usuarios
   resources :comments
 
   resources :posts
   get "/pdf", to: "home#gerar_pdf"
-  mount Rswag::Ui::Engine => "/api-docs"
-  mount Rswag::Api::Engine => "/api-docs"
+
   resources :clientes, only: [ :create ]
   root "home#index"
   # get "home/index~"
