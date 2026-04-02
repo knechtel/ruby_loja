@@ -6,7 +6,7 @@
         session[:usuario_id] = usuario.id
         redirect_to root_path, notice: "Logado com sucesso"
       else
-        flash[:alert] = "Email ou senha inválidos"
+        flash[:notice] = "Email ou senha inválidos"
         render :new
       end
     end
