@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless usuario_logado?
-      print "passei aqui>>>>>>>>>>>>>>>>>>>>>>>>>>>"
       redirect_to "/login", alert: "Você precisa estar logado"
     end
   end

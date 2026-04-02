@@ -1,9 +1,89 @@
-<%= form_with url: login_path do |form| %>
-  <%= form.label :login %>
-  <%= form.text_field :login %>
+<style>
+  body {
+    background-color: #fafafa;
+    font-family: Arial, sans-serif;
+  }
 
-  <%= form.label :password %>
-  <%= form.password_field :senha %>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
-  <%= form.submit "Entrar" %>
-<% end %>
+  .login-box {
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    padding: 40px;
+    width: 350px;
+    text-align: center;
+  }
+
+  .logo {
+    font-family: 'Billabong', cursive;
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+
+  .field {
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+    background: #fafafa;
+    border-radius: 4px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #007cd1;
+  }
+
+  .footer {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  .footer a {
+    color: #0095f6;
+    text-decoration: none;
+    font-weight: bold;
+  }
+</style>
+
+<div class="container">
+  <div class="login-box">
+    <div class="logo">Instagram</div>
+
+    <%= form_with url: login_path, local: true do |form| %>
+      <div class="field">
+        <%= form.text_field :login, placeholder: "Telefone, nome de usuário ou email", class: "input" %>
+      </div>
+
+      <div class="field">
+        <%= form.password_field :senha, placeholder: "Senha", class: "input" %>
+      </div>
+
+      <%= form.submit "Entrar", class: "btn" %>
+    <% end %>
+
+    <div class="footer">
+      Não tem uma conta? <a href="#">Cadastre-se</a>
+    </div>
+  </div>
+</div>

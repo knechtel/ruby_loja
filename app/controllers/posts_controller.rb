@@ -5,9 +5,6 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.all
-    usuario = Usuario.find_by(id: session[:usuario_id])
-    print ">>>>>>>>>>>>>>>> ", usuario.id
-    redirect_to "/login"
   end
 
   def now

@@ -5,11 +5,9 @@
       if !usuario.blank? && usuario.senha == params[:senha] && usuario.login == params[:login]
         session[:usuario_id] = usuario.id
         redirect_to root_path, notice: "Logado com sucesso"
-        puts " DEU certo"
       else
         flash[:alert] = "Email ou senha inválidos"
         render :new
-        puts "ERRO"
       end
     end
 
