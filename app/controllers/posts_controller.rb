@@ -1,9 +1,13 @@
 class PostsController < ApplicationController
+  before_action :require_login
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
   def index
-     @posts = Post.all
+    @posts = Post.all
+    usuario = Usuario.find_by(id: session[:usuario_id])
+    print ">>>>>>>>>>>>>>>> ", usuario.id
+    redirect_to "/login"
   end
 
   def now
