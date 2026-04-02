@@ -73,4 +73,4 @@ end
 
 gem "rubocop", "~> 1.85", group: :development
 
-gem "ruby-lsp", "~> 0.26.8", group: :development
+gem "ruby-lsp", "~> 0.26.9", group: :development
