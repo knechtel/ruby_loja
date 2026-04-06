@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   def current_usuario
-    @current_usuario ||= Usuario.find_by(id: session[:usuario_id])
+    @current_usuario = Usuario.find_by(id: session[:usuario_id])
   end
 
   def usuario_logado?
