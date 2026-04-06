@@ -1,27 +1,108 @@
-<%= form_with(model: comment) do |form| %>
-  <% if comment.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+<style>
+/* container centralizado tipo card */
+.form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 25px;
+  border: 1px solid #dbdbdb;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  font-family: Arial, sans-serif;
+}
 
-      <ul>
-        <% comment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+/* inputs padrão */
+.form-control {
+  width: 100%;
+  height: 40px;
+  padding: 8px 10px;
+  margin-top: 5px;
+  border: 1px solid #dbdbdb;
+  border-radius: 6px;
+  background-color: #fafafa;
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+
+/* foco estilo moderno */
+.form-control:focus {
+  outline: none;
+  border-color: #0095f6;
+  background-color: #fff;
+}
+
+/* textarea alinhado com inputs */
+textarea.form-control {
+  height: 80px;
+  resize: none;
+}
+
+/* labels */
+label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* espaçamento */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* botão estilo Instagram */
+.btn {
+  width: 100%;
+  height: 40px;
+  background-color: #0095f6;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background-color: #0077cc;
+}
+
+/* erros */
+.error-box {
+  background-color: #ffe6e6;
+  border: 1px solid #ffb3b3;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  color: #cc0000;
+}
+</style>
+
+<div class="form-container">
+  <%= form_with(model: comment) do |form| %>
+
+    <% if comment.errors.any? %>
+      <div class="error-box">
+        <h4><%= pluralize(comment.errors.count, "erro") %> impediram o salvamento:</h4>
+        <ul>
+          <% comment.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :body %>
+      <%= form.textarea :body, class: "form-control" %>
     </div>
+
+    <div class="form-group">
+      <%= form.label :post_id %>
+      <%= form.collection_select :post_id, Post.all, :id, :title, { prompt: "Selecione um post" }, { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Enviar", class: "btn" %>
+    </div>
+
   <% end %>
-
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.textarea :body %>
-  </div>
-
-  <div>
-    <%= form.label :post_id, style: "display: block" %>
-    <%= form.text_field :post_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
